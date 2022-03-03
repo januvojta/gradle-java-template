@@ -1,0 +1,58 @@
+/**
+ * This Template contains a support for java 11, SonarQube, slf4j, and JUnit 5 with AssertJ.
+ * The projects build script is compatible with Gradle 7.0
+ *
+ * @author  Vojtěch Janů
+ * @since   2020-10-08
+ */
+
+plugins {
+    id 'java'
+    id 'application'
+    id "org.sonarqube" version "2.7"
+    id "com.diffplug.spotless" version "5.6.1"
+}
+
+repositories {
+    // Use jcenter for resolving dependencies.
+    // You can declare any Maven/Ivy/file repository here.
+    jcenter()
+    maven {
+        url 'https://repo.maven.apache.org/maven2'
+        name 'Maven Central'
+    }
+}
+
+java{
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+group = 'cz.cvut.ciirc'
+version = '0.0.1'
+mainClassName = 'cz.cvut.ciirc.template.Main'
+
+dependencies {
+    // slf4j
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    implementation group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+
+    // JUnit 5.x
+    testImplementation(platform('org.junit:junit-bom:5.8.2'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+
+    // AssertJ
+    testCompile('org.assertj:assertj-core:3.22.0')
+}
+
+test {
+    useJUnitPlatform()
+}
+
+spotless {
+    java {
+        target '**/*.java'
+        removeUnusedImports()
+        trimTrailingWhitespace()
+    }
+}
