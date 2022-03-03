@@ -1,8 +1,6 @@
 # Default Java Template for Gradle
 
-This Template contains a support for java 11, SonarQube, slf4j, and JUnit 4. 
-The formatting is set to AOSP Google java format (https://source.android.com/setup/contribute/code-style). 
-Java Milo library is included in version 5.1 as default too but that can be disabled.
+This Template contains a support for java 11, SonarQube, slf4j, and JUnit 5 with AssertJ.
 The projects build script is compatible with Gradle 7.0
 
 ## Instal Open JDK 11
@@ -37,8 +35,3 @@ To see if it worked, open up the Command Prompt and type `java -version` and see
 1. Copy content of `build.gradle` from this repository to the new project.
 1. Change `mainClassName = 'cz.cvut.ciirc.template.Main'` to a new path to the main class.
 
-## Setup IntelliJ IDEA IDE
-1. CTRL + ALT + S
-1. Plugins
-1. Install google-java-format
-1. Switch to google-java-format plugin, check enable, and switch to AOSP.
